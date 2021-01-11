@@ -1,0 +1,234 @@
+/* Payment form */
+#fluxopay-payment-form {
+	display: none;
+}
+
+#fluxopay-payment-methods:before,
+#fluxopay-payment-methods:after,
+#fluxopay-bank-transfer-form ul:before,
+#fluxopay-bank-transfer-form ul:after {
+	content: " ";
+	display: table;
+}
+
+#fluxopay-payment-methods:after,
+#fluxopay-bank-transfer-form ul:after {
+	clear: both;
+}
+
+#fluxopay-payment-methods,
+#fluxopay-bank-transfer-form ul {
+	list-style: none;
+	margin: 0 0 10px;
+	padding: 0;
+	*zoom: 1;
+}
+
+#fluxopay-payment-methods input[type="radio"],
+#fluxopay-bank-transfer-form ul input[type="radio"] {
+	display: none;
+}
+
+/* Payment methods */
+.woocommerce #payment ul.payment_methods li #fluxopay-payment-methods li,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-payment-methods li {
+	border-color: transparent transparent #bbb;
+	border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-style: solid;
+	border-width: 1px;
+	display: block;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.woocommerce #payment ul.payment_methods li .woo-fluxopay-form-storefront #fluxopay-payment-methods li,
+.woocommerce-page #payment ul.payment_methods li .woo-fluxopay-form-storefront #fluxopay-payment-methods li {
+	padding: 5px !important;
+}
+
+.woocommerce #payment ul.payment_methods li #fluxopay-payment-methods label,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-payment-methods label {
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px 10px;
+}
+
+/* Bank transfer items */
+.woocommerce #payment ul.payment_methods li #fluxopay-payment-methods li.active,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-payment-methods li.active {
+	border-color: #bbb #bbb transparent;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.woocommerce #payment ul.payment_methods li #fluxopay-bank-transfer-form p,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-bank-transfer-form p {
+	margin-bottom: .5em;
+}
+
+.woocommerce #payment ul.payment_methods li #fluxopay-bank-transfer-form li,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-bank-transfer-form li {
+	border: none;
+	display: block;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 130px;
+}
+
+.woocommerce #payment ul.payment_methods li #fluxopay-bank-transfer-form label,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-bank-transfer-form label {
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px 10px;
+	text-align: center;
+}
+
+.woocommerce #payment ul.payment_methods li #fluxopay-bank-transfer-form i,
+.woocommerce-page #payment ul.payment_methods li #fluxopay-bank-transfer-form i {
+	background-color: transparent;
+	background-image: url("../../images/transparent-checkout-icons.png");
+	background-repeat: no-repeat;
+	display: block;
+	height: 51px;
+	margin: 0 auto;
+	width: 51px;
+}
+
+#fluxopay-icon-bradesco {
+	background-position: 0 -51px;
+}
+
+#fluxopay-icon-itau {
+	background-position: -204px -51px;
+}
+
+#fluxopay-icon-bancodobrasil {
+	background-position: -51px -51px;
+}
+
+#fluxopay-icon-banrisul {
+	background-position: -102px -51px;
+}
+
+#fluxopay-icon-hsbc {
+	background-position: -153px -51px;
+}
+
+#fluxopay-bank-transfer-form li.active #fluxopay-icon-bradesco,
+#fluxopay-icon-bradesco:hover {
+	background-position: 0 0;
+}
+
+#fluxopay-bank-transfer-form li.active #fluxopay-icon-itau,
+#fluxopay-icon-itau:hover {
+	background-position: -204px 0;
+}
+
+#fluxopay-bank-transfer-form li.active #fluxopay-icon-bancodobrasil,
+#fluxopay-icon-bancodobrasil:hover {
+	background-position: -51px 0;
+}
+
+#fluxopay-bank-transfer-form li.active #fluxopay-icon-banrisul,
+#fluxopay-icon-banrisul:hover {
+	background-position: -102px 0;
+}
+
+#fluxopay-bank-transfer-form li.active #fluxopay-icon-hsbc,
+#fluxopay-icon-hsbc:hover {
+	background-position: -153px 0;
+}
+
+/* Banking ticket */
+#fluxopay-icon-ticket {
+    background: transparent url(../../images/imgBarcode.png) no-repeat;
+    display: block;
+    float: left;
+    height: 85px;
+    margin: 0 10px 5px 0;
+    width: 68px;
+	margin-left: 2px;
+}
+
+#fluxopay-icon-card {
+    background: transparent url(../../images/iconcard.png) no-repeat;
+    display: block;
+    float: left;
+    height: 85px;
+    margin: 0 10px 5px 0;
+    width: 68px;
+	margin-left: 2px;
+}
+
+.woocommerce #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-holder-name-field,
+.woocommerce #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-number-field,
+.woocommerce #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-installments-field,
+.woocommerce #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-holder-cpf-field,
+.woocommerce-page #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-holder-name-field,
+.woocommerce-page #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-number-field,
+.woocommerce-page #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-installments-field,
+.woocommerce-page #payment ul.payment_methods li .woo-fluxopay-form-storefront p#fluxopay-card-holder-cpf-field {
+	float: none;
+	width: 100%;
+}
+
+.woo-fluxopay-form-storefront .woocommerce-error ul {
+	margin: 0;
+	padding: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 500px) {
+	.woocommerce #payment ul.payment_methods li #fluxopay-payment-methods li,
+	.woocommerce-page #payment ul.payment_methods li #fluxopay-payment-methods li {
+		border: none;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		float: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.woocommerce #payment ul.payment_methods li #fluxopay-payment-methods li.active,
+	.woocommerce-page #payment ul.payment_methods li #fluxopay-payment-methods li.active {
+		border: none;
+	}
+
+	#fluxopay-payment-methods input[type="radio"] {
+		display: inline;
+	}
+
+	.woocommerce #payment ul.payment_methods li #fluxopay-card-form p.form-row.form-row-first,
+	.woocommerce #payment ul.payment_methods li #fluxopay-card-form p.form-row.form-row-last,
+	.woocommerce-page #payment ul.payment_methods li #fluxopay-card-form p.form-row.form-row-first,
+	.woocommerce-page #payment ul.payment_methods li #fluxopay-card-form p.form-row.form-row-last {
+		float: none;
+		width: 96%;
+	}
+}
+
+.wc_payment_method  .payment_method_fluxopay{
+    padding: 1rem;
+    background: #eee;
+    /* background-image: linear-gradient(148deg,#00304d 12%,#024d66 42%,#036177 57%,#0ad8dd 97%); */
+    /* color: white; */
+    font-family: Open Sans,sans-serif;
+    font-size: 3px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+
+#fluxopay-payment-form{
+    color: black;
+}
