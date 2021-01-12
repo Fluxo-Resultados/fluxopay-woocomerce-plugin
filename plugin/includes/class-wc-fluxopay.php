@@ -14,10 +14,10 @@ class WC_FluxoPay
                     $order_id = $callback['order_id'];
 
                     $UpdateOrder = array(
-                        "id" => $callback['id'],
-                        "status" => $callback['status'],
-                        "message" => $callback['status'],
-                        "description" => $callback['status'],
+                        "id" => $callback['event']['id'],
+                        "status" => $callback['event']['status'],
+                        "message" => $callback['type'],
+                        "description" => $callback['type'],
                     );
 
                     $object = new stdClass();

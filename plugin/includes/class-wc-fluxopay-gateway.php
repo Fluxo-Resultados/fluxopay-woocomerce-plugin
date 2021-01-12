@@ -322,6 +322,12 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
     {
         $data = $order->get_data();
 
+        if (isset($posted->invoice_url)) {
+            $invoice_url = $posted->invoice_url;
+        } else {
+            $invoice_url = 'https://app.fluxoresultados.com.br/checkout/' . $posted->id;
+        };
+
         $meta_data = array();
         $payment_data = array(
             'paymenttype' => '',
@@ -353,8 +359,8 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
         $method = sanitize_text_field($_POST['fluxopay_payment_method']);
 
         $payment_data['paymenttype'] = $method;
-        $meta_data[__('', 'woo-fluxopay')] = sanitize_text_field((string)$posted->invoice_url);
-        $payment_data['link'] = sanitize_text_field((string)$posted->invoice_url);
+        $meta_data[__('', 'woo-fluxopay')] = sanitize_text_field((string)$invoice_url);
+        $payment_data['link'] = sanitize_text_field((string)$invoice_url);
 
         $meta_data['_wc_fluxopay_payment_data'] = $payment_data;
 
@@ -373,8 +379,14 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
 
     public function update_order_status($posted, $order_id)
     {
-        if (isset($posted->id)) {
-            $id = $posted->id;
+        if (isset($posted->event)) {
+            $event = $posted->event;
+        } else {
+            $event = $posted;
+        };
+
+        if (isset($event->id)) {
+            $id = $event->id;
 
             $order = wc_get_order($order_id);
 
@@ -384,12 +396,12 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
 
             if (isset($id)) {
                 if ('yes' === $this->debug) {
-                    $this->log->add($this->id, 'FluxoPay payment status for order ' . $order->get_order_number() . ' is: ' . intval($posted->status));
+                    $this->log->add($this->id, 'FluxoPay payment status for order ' . $order->get_order_number() . ' is: ' . intval($event->status));
                 }
 
-                $this->SavePaymentData($order, $posted);
+                $this->SavePaymentData($order, $event);
 
-                switch ($posted->status) {
+                switch ($event->status) {
                     case 'pending':
                         $order->update_status('on-hold', __('FluxoPay: Processamento.', 'woo-fluxopay'));
 
@@ -406,7 +418,7 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
                             wc_reduce_stock_levels($order_id);
                         } else {
                             $order->add_order_note(__('FluxoPay: Autorizado.', 'woo-fluxopay'));
-                            $order->payment_complete(sanitize_text_field((string)$posted->id));
+                            $order->payment_complete(sanitize_text_field((string)$event->id));
                         }
 
                         break;
