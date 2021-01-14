@@ -14,7 +14,7 @@ $installments = isset($tc_installments) ? $tc_installments : 12;
             <li><label>
                     <input id="fluxopay-payment-method-boleto" type="radio" name="fluxopay_payment_method"
                            value="boleto" <?php checked(true, ('no' == $tc_card && 'yes' == $tc_ticket), true); ?> />
-                    <?php _e('Boleto ou Pix', 'woo-fluxopay'); ?>
+                    <?php _e('Boleto', 'woo-fluxopay'); ?>
 
                 </label></li>
         <?php endif; ?>
@@ -23,7 +23,7 @@ $installments = isset($tc_installments) ? $tc_installments : 12;
             <li><label>
                     <input id="fluxopay-payment-method-card" type="radio" name="fluxopay_payment_method"
                            value="card" <?php checked(true, ('yes' == $tc_card), true); ?> />
-                    <?php _e('Cartão de Crédito ou Débito', 'woo-fluxopay'); ?>
+                    <?php _e('Cartão', 'woo-fluxopay'); ?>
                 </label></li>
         <?php endif; ?>
 
@@ -35,7 +35,7 @@ $installments = isset($tc_installments) ? $tc_installments : 12;
         <div id="fluxopay-boleto-form" class="fluxopay-method-form">
             <p>
                 <i id="fluxopay-icon-ticket"></i>
-                <?php _e('Realize o pagamento através de boleto bancário ou pix.', 'woo-fluxopay'); ?>
+                <?php _e('Pague usando Boleto bancário ou com o Pix', 'woo-fluxopay'); ?>
             </p>
 
             <div class="clear"></div>
@@ -50,7 +50,7 @@ $installments = isset($tc_installments) ? $tc_installments : 12;
         <div id="fluxopay-card-form" class="fluxopay-method-form">
             <p>
                 <i id="fluxopay-icon-card"></i>
-                <?php _e('Realize o pagamento através do seu cartão de crédito ou débito.', 'woo-fluxopay'); ?>
+                <?php _e('Pague com seu cartão de crédito, débito ou Pix', 'woo-fluxopay'); ?>
             </p>
 
             <div class="clear"></div>

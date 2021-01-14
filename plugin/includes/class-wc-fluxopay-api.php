@@ -76,7 +76,28 @@ class WC_FluxoPay_API
             $identity = sanitize_text_field();
         } else if (!empty($posted['customer_identity'])) {
             $identity = sanitize_text_field($posted['customer_identity']);
-        }
+        };
+
+        if (isset($this->gateway->send_email)) {
+            if ($this->gateway->send_email === "yes") {
+                $send_email = true;
+            } else {
+                $send_email = false;
+            }
+        } else {
+            $send_email = true;
+        };
+
+        if (isset($this->gateway->fee_payed_by_customer)) {
+            if ($this->gateway->fee_payed_by_customer === "yes") {
+                $fee_payed_by_customer = true;
+            } else {
+                $fee_payed_by_customer = false;
+            }
+        } else {
+            $fee_payed_by_customer = true;
+        };
+
 
         $payload = [
             'dry_run' => $IsSandbox,
@@ -85,7 +106,8 @@ class WC_FluxoPay_API
             'amount' => floatval($order->get_total()),
             'description' => $description,
             'notification_url' => $this->get_callback_uri($order->get_id()),
-            'send_email' => true,
+            'send_email' => $send_email,
+            'fee_payed_by_customer' => $fee_payed_by_customer,
             'customer' => [
                 'name' => sanitize_text_field($posted['billing_first_name'] . ' ' . $posted['billing_last_name']),
                 'email' => sanitize_text_field($posted['billing_email']),

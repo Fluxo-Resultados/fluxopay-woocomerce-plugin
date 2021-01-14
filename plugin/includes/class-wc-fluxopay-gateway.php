@@ -26,6 +26,8 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
         $this->tc_ticket = $this->get_option('tc_ticket', 'no');
         $this->sandbox = $this->get_option('sandbox', 'no');
         $this->debug = $this->get_option('debug');
+        $this->send_email = $this->get_option('send_email');
+        $this->fee_payed_by_customer = $this->get_option('fee_payed_by_customer');
 
         if ('yes' === $this->debug) {
             if (function_exists('wc_get_logger')) {
@@ -154,12 +156,12 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
             'transparent_checkout' => array(
                 'title' => __('Opções de pagamento', 'woo-fluxopay'),
                 'type' => 'title',
-                'description' => '',
+                'description' => 'Todos os links de pagamento vem com a opção de pagar com o Pix ativada.',
             ),
             'tc_ticket' => array(
-                'title' => __('Boleto Bancário e Pix', 'woo-fluxopay'),
+                'title' => __('Boleto Bancário', 'woo-fluxopay'),
                 'type' => 'checkbox',
-                'label' => __('Boleto Bancário e Pix', 'woo-fluxopay'),
+                'label' => __('Boleto Bancário', 'woo-fluxopay'),
                 'default' => 'yes',
             ),
             'tc_card' => array(
@@ -176,6 +178,18 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
                 'options' => array(
                     1 => 'Sem parcelamento',
                 )
+            ),
+            'send_email' => array(
+                'title' => __('Emails', 'woo-fluxopay'),
+                'type' => 'checkbox',
+                'label' => __('Enviar emails de cobrança para meus clientes', 'woo-fluxopay'),
+                'default' => 'yes',
+            ),
+            'fee_payed_by_customer' => array(
+                'title' => __('Taxa', 'woo-fluxopay'),
+                'type' => 'checkbox',
+                'label' => __('Repassar valor das taxas para meus clientes', 'woo-fluxopay'),
+                'default' => 'no',
             ),
             'behavior' => array(
                 'title' => __('Integração', 'woo-fluxopay'),
