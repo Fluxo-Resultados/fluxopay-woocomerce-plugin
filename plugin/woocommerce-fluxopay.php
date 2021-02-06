@@ -4,7 +4,7 @@
  * Plugin URI:           https://www.fluxoresultados.com.br/
  * Description:          Com a FluxoPay você emite boletos e links de pagamento para milhares de clientes de forma simples e automática.
  * Author:               FluxoPay
- * Version:              1.1.0
+ * Version:              1.1.1
  * License:              GPLv3 or later
  * Text Domain:          woo-fluxopay
  * Domain Path:          /languages
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WC_FLUXOPAY_VERSION', '1.1.0' );
+define( 'WC_FLUXOPAY_VERSION', '1.1.1' );
 define( 'WC_FLUXOPAY_PLUGIN_FILE', __FILE__ );
 
 if ( ! class_exists( 'WC_FluxoPay' ) ) {
