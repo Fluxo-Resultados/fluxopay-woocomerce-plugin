@@ -427,7 +427,7 @@ class WC_FluxoPay_Gateway extends WC_Payment_Gateway
 
                         break;
                     case 'payed':
-                        if (method_exists($order, 'get_status') && 'cancelled' === $order->get_status()) {
+                        if (method_exists($order, 'get_status') && 'canceled' === $order->get_status()) {
                             $order->update_status('processing', __('FluxoPay: Payment approved.', 'woo-fluxopay'));
                             wc_reduce_stock_levels($order_id);
                         } else {
